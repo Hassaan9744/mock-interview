@@ -10,7 +10,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 import FormField from "../FormField";
 import { useRouter } from "next/navigation";
-import { SignIn, SignUp } from "@/lib/actions/auth.action";
+import { signIn, signUp } from "@/lib/actions/auth.action";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -48,7 +48,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           email,
           password
         );
-        const result = await SignUp({
+        const result = await signUp({
           uid: userCredentials.user.uid,
           name: name!,
           email,
@@ -72,7 +72,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
           toast.error("Sign in faild");
           return;
         }
-        await SignIn({ email, idToken });
+        await signIn({ email, idToken });
         toast.success("Sign in successful");
         router.push("/");
         console.log("[Sign in]values", values);
