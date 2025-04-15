@@ -9,7 +9,7 @@ enum CallStatus {
   FINISHED = "FINISHED",
 }
 const Agent = ({ userName }: AgentProps) => {
-  const callStatus = CallStatus.FINISHED;
+  const callStatus = CallStatus.ACTIVE;
   const isSpeaking = true;
   const messages = ["waht is naem", "my name is hassna"];
   const lastMessage = messages[messages.length - 1];
