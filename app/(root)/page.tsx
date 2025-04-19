@@ -1,10 +1,10 @@
 import InterviewCard from "@/components/InterviewCard";
 import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/lib/actions/auth.action";
 import {
-  getCurrentUser,
   getInterviewsByUserId,
   getLatestInterviews,
-} from "@/lib/actions/auth.action";
+} from "@/lib/actions/general.action";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -48,9 +48,11 @@ const Page = async () => {
               <InterviewCard
                 {...interview}
                 key={interview.id}
+                interviewId={interview.id}
                 title={interview.role}
                 date={new Date(interview.createdAt).toLocaleDateString()}
                 status={interview.finalized ? "Finalized" : "Pending"}
+                createdAt={interview.createdAt}
               />
             ))
           ) : (
@@ -66,9 +68,11 @@ const Page = async () => {
               <InterviewCard
                 {...interview}
                 key={interview.id}
+                interviewId={interview.id}
                 title={interview.role}
                 date={new Date(interview.createdAt).toLocaleDateString()}
                 status={interview.finalized ? "Finalized" : "Pending"}
+                createdAt={interview.createdAt}
               />
             ))
           ) : (
